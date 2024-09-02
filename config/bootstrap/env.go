@@ -32,6 +32,7 @@ type Env struct {
 	MySQLAddress           string `mapstructure:"MYSQL_ADDRESS"`
 	LocalStaticPath        string `mapstructure:"LOCAL_STATIC_PATH"`
 	UrlStaticPath          string `mapstructure:"URL_STATIC_PATH"`
+	EtcdAddress            string `mapstructure:"ETCD_ADDRESS"`
 }
 
 func NewEnv() *Env {

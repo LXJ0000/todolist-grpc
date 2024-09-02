@@ -12,6 +12,11 @@ import (
 
 type UserService struct {
 	orm orm.Database
+	service.UnimplementedUserServiceServer
+}
+
+func NewUserService(orm orm.Database) *UserService {
+	return &UserService{orm: orm}
 }
 
 func (u *UserService) Login(ctx context.Context, req *service.UserRequest) (rsp *service.UserDetailResponse, err error) {
