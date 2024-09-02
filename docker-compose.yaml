@@ -1,0 +1,28 @@
+version: '3.0'
+services:
+  mysql:
+    image: "mysql:8.0.19"
+    restart: "always"
+    command: "--default-authentication-plugin=mysql_native_password"
+    environment:
+      MYSQL_ROOT_PASSWORD: "root"
+      # MYSQL_DATABASE: "go-backend"
+      MYSQL_PASSWORD: "root"
+    volumes:
+      - "./script/mysql/:/docker-entrypoint-initdb.d/"
+    ports:
+      - "3306:3306"
+  redis:
+    image: "redis"
+    restart: always
+    volumes:
+      - /tmp/docker/data/redis/:/data
+    ports:
+      - 6379:6379 # 自定义的是暴露出去的端口, Redis 容器内运行固定为 6379
+    command: redis-server --requirepass root --appendonly yes
+  etcd:
+    image: "bitnami/etcd:latest"
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+    ports:
+      - "2379:2379"
