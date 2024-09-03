@@ -4,8 +4,8 @@ import (
 	"context"
 	"errors"
 
+	"github.com/LXJ0000/todolist-grpc/app/user/domain"
 	service "github.com/LXJ0000/todolist-grpc/app/user/internal/service/pb"
-	"github.com/LXJ0000/todolist-grpc/domain"
 	"github.com/LXJ0000/todolist-grpc/pkg/orm"
 	"gorm.io/gorm"
 )

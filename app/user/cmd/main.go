@@ -10,7 +10,7 @@ import (
 	"github.com/LXJ0000/todolist-grpc/app/user/discovery"
 	"github.com/LXJ0000/todolist-grpc/app/user/internal/handler"
 	service "github.com/LXJ0000/todolist-grpc/app/user/internal/service/pb"
-	"github.com/LXJ0000/todolist-grpc/config/bootstrap"
+	"github.com/LXJ0000/todolist-grpc/app/user/config/bootstrap"
 	"google.golang.org/grpc"
 )
 

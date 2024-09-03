@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	"github.com/LXJ0000/todolist-grpc/domain"
+	"github.com/LXJ0000/todolist-grpc/app/user/domain"
 	"github.com/LXJ0000/todolist-grpc/pkg/orm"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
