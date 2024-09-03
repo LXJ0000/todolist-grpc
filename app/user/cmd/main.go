@@ -1,16 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"log/slog"
 	"net"
 	"os"
 	"time"
 
-	"github.com/LXJ0000/todolist-grpc/app/user/discovery"
-	"github.com/LXJ0000/todolist-grpc/app/user/internal/handler"
-	service "github.com/LXJ0000/todolist-grpc/app/user/internal/service/pb"
-	"github.com/LXJ0000/todolist-grpc/app/user/config/bootstrap"
+	"github.com/LXJ0000/todolist-grpc-user/config/bootstrap"
+	"github.com/LXJ0000/todolist-grpc-user/discovery"
+	"github.com/LXJ0000/todolist-grpc-user/internal/handler"
+	service "github.com/LXJ0000/todolist-grpc-user/internal/service/pb"
 	"google.golang.org/grpc"
 )
 
@@ -19,25 +18,23 @@ func main() {
 
 	env := app.Env
 
-	fmt.Println(env)
-
 	etcdAddress := []string{env.EtcdAddress}
 	opts := &slog.HandlerOptions{
 		AddSource: true,
 		Level:     slog.LevelDebug,
 	}
 	var slogHandler slog.Handler = slog.NewTextHandler(os.Stdout, opts)
-	etcdRegister := discovery.NewRegister(etcdAddress, time.Second, slog.New(slogHandler))
+	etcdRegister := discovery.NewRegister(etcdAddress, time.Second*3, slog.New(slogHandler))
 	userNode := discovery.Server{
 		Name: "user",
-		Addr: "localhost:8081",
+		Addr: "localhost:10001",
 	}
 	server := grpc.NewServer()
 	defer server.Stop()
 	// 绑定服务
 	service.RegisterUserServiceServer(server, handler.NewUserService(app.Orm))
 
-	listen, err := net.Listen("tcp", "localhost:8080")
+	listen, err := net.Listen("tcp", "localhost:10001")
 	if err != nil {
 		panic(err)
 	}

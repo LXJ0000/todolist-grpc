@@ -1,0 +1,33 @@
+syntax="proto3";
+package pb;
+option go_package="/internal/service;service";
+
+message UserModel {
+    // @inject_tag: json:"user_id"
+    uint32 UserID = 1;
+    // @inject_tag: json:"user_name"
+    string UserName = 2;
+    // @inject_tag: json:"nick_name"
+    string NickName = 3;
+}
+
+message UserRequest {
+    // @inject_tag: json:"nick_name" form:"nick_name"
+    string NickName = 1;
+    // @inject_tag: json:"user_name" form:"user_name"
+    string UserName = 2;
+    // @inject_tag: json:"password" form:"password"
+    string Password = 3;
+}
+
+message UserDetailResponse {
+    UserModel UserModel = 1;
+    uint32 Code = 2;
+}
+
+service UserService {
+    rpc Register (UserRequest) returns (UserDetailResponse);
+    rpc Login (UserRequest) returns (UserDetailResponse);
+}
+
+// protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative internal/service/pb/*.proto

@@ -2,8 +2,9 @@ package snowflakeutil
 
 import (
 	"fmt"
-	"github.com/bwmarrin/snowflake"
 	"time"
+
+	"github.com/bwmarrin/snowflake"
 )
 
 var node *snowflake.Node

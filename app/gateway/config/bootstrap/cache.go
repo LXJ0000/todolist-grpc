@@ -6,7 +6,7 @@ import (
 
 	"context"
 
-	"github.com/LXJ0000/todolist-grpc-user/pkg/cache"
+	"github.com/LXJ0000/todolist-grpc-gateway/pkg/cache"
 	"github.com/redis/go-redis/v9"
 )
 

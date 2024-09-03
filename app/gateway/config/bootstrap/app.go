@@ -1,10 +1,10 @@
 package bootstrap
 
 import (
-	"github.com/LXJ0000/todolist-grpc-user/pkg/cache"
-	logutil "github.com/LXJ0000/todolist-grpc-user/pkg/log"
-	"github.com/LXJ0000/todolist-grpc-user/pkg/orm"
-	snowflakeutil "github.com/LXJ0000/todolist-grpc-user/pkg/snowflake"
+	"github.com/LXJ0000/todolist-grpc-gateway/pkg/log"
+	"github.com/LXJ0000/todolist-grpc-gateway/pkg/snowflake"
+	"github.com/LXJ0000/todolist-grpc-gateway/pkg/cache"
+	"github.com/LXJ0000/todolist-grpc-gateway/pkg/orm"
 )
 
 type Application struct {

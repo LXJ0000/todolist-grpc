@@ -4,7 +4,7 @@ import (
 	"log/slog"
 	"time"
 
-	"go.etcd.io/etcd/clientv3"
+	"go.etcd.io/etcd/client/v3"
 	"google.golang.org/grpc/resolver"
 )
 
@@ -20,6 +20,6 @@ type Resolver struct {
 	keyPerfix      string
 	serverAddrList []resolver.Address
 
-	cc resolver.ClientConn
+	cc     resolver.ClientConn
 	logger *slog.Logger
 }
